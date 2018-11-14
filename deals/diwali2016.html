@@ -1,0 +1,35 @@
+---
+title: Diwali Deals
+permalink: "/deals/diwali-2016"
+layout: single
+description: A roundup of the best board game deals in India this Diwali!
+excerpt: A roundup of the best board game deals in India this Diwali!
+header:
+  image: diwali-deals-promo.png
+---
+
+We've round up some of the best online deals on board games in India this season - you should definitely consider picking these up!
+
+{% for game in site.data.deals.diwali_2016 %}
+  
+## [{{ game.title }}]({{game.url}})
+
+{{ game.embed }}
+{: .align-right}
+
+{{ game.description }}
+
+*{{ game.playtime }}*
+
+{% endfor %}
+
+
+If we've missed a deal, please  <a href="mailto:karthikb351@gmail.com">write to us</a>. We'd be happy to add it to our list!
+
+If you want a game that's not available for a reasonable price in India, please <a href="https://goo.gl/forms/hKbQOUFqs0ElnEin2">fill this form</a>. We are trying to import some games in bulk and save some money on the shipping.
+
+
+<h2>You can also follow us at</h2>
+<a class="btn btn--facebook" href="https://facebook.com/ReRollBLR"><i class="fa fa-fw fa-facebook"></i> ReRoll Games</a>
+<a class="btn btn--twitter" href="https://twitter.com/ReRoll_BLR"><i class="fa fa-fw fa-twitter"></i> @ReRoll_BLR</a>
+<a class="btn btn--linkedin" href="https://telegram.me/reroll"><i class="fa fa-fw fa-paper-plane" aria-hidden="true"></i> @ReRoll</a>
