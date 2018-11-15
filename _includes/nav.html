@@ -15,8 +15,9 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 {% for section in page.sections %}
+				{% assign navval = section | slugify %}
 				<li>
-                    <a class="page-scroll" href="#{{ section | slugify }}">{{ section }}</a>
+                    <a class="page-scroll" href="#{{ site[navval] }}">{{ section }}</a>
                 </li>
 				{% endfor %}
             </ul>
