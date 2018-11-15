@@ -17,7 +17,7 @@
                 {% for section in page.sections %}
 				{% assign navval = section | slugify %}
 				<li>
-                    <a class="page-scroll" href="#{{ site[navval] }}">{{ section }}</a>
+                    <a class="page-scroll" href="{{ site[navval] }}">{{ section }}</a>
                 </li>
 				{% endfor %}
             </ul>
