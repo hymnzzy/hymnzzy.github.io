@@ -14,21 +14,11 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
-                <li>
-                    <a class="page-scroll" href="#about">{{ page.navigation.section1 }}</a>
+                {% for section in sections %}
+				<li>
+                    <a class="page-scroll" href="#{{ section | slugify }}">{{ page.navigation.section1 }}</a>
                 </li>
-                <li>
-                    <a class="page-scroll" href="#services">Services</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#portfolio">Portfolio</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#contact">Contact</a>
-                </li>
+				{% endfor %}
             </ul>
         </div>
         <!-- /.navbar-collapse -->
