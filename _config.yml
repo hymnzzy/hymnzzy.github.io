@@ -10,3 +10,10 @@ github_username:
 
 # Build settings
 markdown: kramdown
+
+# Global nav settings
+home: '/'
+about-us: '#about-us'
+our-activities: '#our-activities'
+code-of-conduct: '/code-of-conduct'
+find-us: '#find-us'
