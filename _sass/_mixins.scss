@@ -1,53 +1,66 @@
-/* ==========================================================================
-   MIXINS
-   ========================================================================== */
-
-%tab-focus {
-  /* Default*/
-  outline: thin dotted $warning-color;
-  /* Webkit*/
-  outline: 5px auto $warning-color;
-  outline-offset: -2px;
+@mixin transition-all()
+{
+    -webkit-transition: all 0.35s;
+    -moz-transition: all 0.35s;
+    transition: all 0.35s;
 }
 
-/*
-   em function
-   ========================================================================== */
-
-@function em($target, $context: $doc-font-size) {
-  @return ($target / $context) * 1em;
+@mixin background-cover()
+{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    background-size: cover;
+    -o-background-size: cover;
 }
 
+@mixin button-variant($color, $background, $border)
+{
+	color: $color;
+	background-color: $background;
+	border-color: $border;
+	@include transition-all;
 
-/*
-   Bourbon clearfix
-   ========================================================================== */
+	&:hover,
+	&:focus,
+	&.focus,
+	&:active,
+	&.active,
+	.open > .dropdown-toggle & {
+		color: $color;
+		background-color: darken($background, 5%);
+    border-color: darken($border, 7%);
+	}
+	&:active,
+	&.active,
+	.open > .dropdown-toggle & {
+		background-image: none;
+	}
+	&.disabled,
+	&[disabled],
+	fieldset[disabled] & {
+		&,
+		&:hover,
+		&:focus,
+		&.focus,
+		&:active,
+		&.active {
+			background-color: $background;
+			border-color: $border;
+		}
+	}
 
-/*
-  * Provides an easy way to include a clearfix for containing floats.
-  * link http://cssmojo.com/latest_new_clearfix_so_far/
-  *
-  * example scss - Usage
-  *
-  * .element {
-  *   @include clearfix;
-  * }
-  *
-  * example css - CSS Output
-  *
-  * .element::after {
-  *   clear: both;
-  *   content: "";
-  *   display: table;
-  * }
-*/
+	.badge {
+		color: $background;
+		background-color: $color;
+	}
+}
 
-@mixin clearfix {
-  clear: both;
+@mixin sans-serif-font()
+{
+	font-family: 'Open Sans', 'Helvetica Neue', Arial, sans-serif;
+}
 
-  &::after {
-    clear: both;
-    content: "";
-    display: table;
-  }
+@mixin serif-font()
+{
+	font-family: 'Merriweather', 'Helvetica Neue', Arial, sans-serif;
 }
