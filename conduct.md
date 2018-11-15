@@ -2,6 +2,8 @@
 title: The ReRoll Code of Conduct
 permalink: "/code-of-conduct"
 layout: coc
+navheader_title: Hyderabad BoardGamers
+sections: ['Home','Find Us']
 ---
 
 **Contact**: [karthikb351@gmail.com](mailto:karthikb351@gmail.com)
