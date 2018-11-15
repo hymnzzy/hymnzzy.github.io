@@ -209,9 +209,12 @@ header {
 // Conduct Page
 
 article#conduct{
-    padding: 100px 0;
+    padding: 100px 25px;
     background: #51423f;
     color: white;
+	@media (min-width: 768px) {
+        padding: 100px;
+    }
 }
 
 // Sections
