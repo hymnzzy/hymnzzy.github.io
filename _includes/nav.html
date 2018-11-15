@@ -16,7 +16,7 @@
             <ul class="nav navbar-nav navbar-right">
                 {% for section in page.sections %}
 				<li>
-                    <a class="page-scroll" href="#{{ section | slugify }}">{{ page.navigation.section1 }}</a>
+                    <a class="page-scroll" href="#{{ section | slugify }}">{{ section }}</a>
                 </li>
 				{% endfor %}
             </ul>
