@@ -1,7 +1,7 @@
 ---
 title: The ReRoll Code of Conduct
 permalink: "/code-of-conduct"
-layout: single
+layout: coc
 ---
 
 **Contact**: [karthikb351@gmail.com](mailto:karthikb351@gmail.com)
