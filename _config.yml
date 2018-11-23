@@ -4,8 +4,8 @@ email: boardgamersofhyderabad@gmail.com
 description: Official Website for Board Gamers of Hyderabad
 author: Himanshu
 version: v1
-
 header_title: BGH
+
 defaults:
   - scope:
       path: "_images"
