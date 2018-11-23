@@ -27,24 +27,24 @@ sections:
     - name: Twin City Board Gamers' Club
       platforms:
       - name: Facebook
-        link: "/twincityBGC"
+        link: "twincityBGC"
       - name: Instagram
-        link: "/twincityBGC"
+        link: "twincityBGC"
       - name: WhatsApp
         link: ''
       - name: Meetup
-        link: "/twincityBGC"
+        link: "twincityBGC"
       widgetURL: https://meetu.ps/3jyND8
     - name: Hyderabad Board Gamers' Club
       platforms:
       - name: Facebook
-        link: "/hydBGC"
+        link: "hydBGC"
       - name: Instagram
-        link: "/hydBGC"
+        link: "hydBGC"
       - name: WhatsApp
         link: ''
       - name: Meetup
-        link: "/hydBGC"
+        link: "hydBGC"
       widgetURL: https://meetu.ps/3jyND7
     
   - name: Games We Play
