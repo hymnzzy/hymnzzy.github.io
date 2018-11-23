@@ -156,11 +156,13 @@ header {
     @include background-cover;
     background-position: center;
     background-image: url('../backgrounds/header.jpg');
-	box-shadow: inset 0 0 0 1000px #51423fe9;
-	-webkit-box-shadow: inset 0 0 0 1000px #51423fe9;
-	-moz-box-shadow: inset 0 0 0 1000px #51423fe9;
     text-align: center;
     color: white;
+	.headerLayer:{
+		width:100%
+		height:100%
+		background:#51423fe9;
+	}
     .header-content {
         position: relative;
         text-align: center;
