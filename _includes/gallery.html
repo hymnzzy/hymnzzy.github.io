@@ -1,0 +1,21 @@
+{% for section in page.sections %}{% if section.name == 'Gallery' %}{% assign thisSection = section %}{% endif %}{% endfor %}
+{% assign count = 0 %}
+{% assign image_files = site.static_files | where: "image", true %}
+<section class="no-padding" id="gallery">
+    <div class="container-fluid">
+        <div class="row no-gutter">
+			{% for galleryimage in image_files %}
+			{% assign count = count | plus: 1 %}
+			<div class="col-lg-4 col-sm-6 {% if count > thisSection.imagesCount %}hidden{% endif %}">
+                <a rel="prettyPhoto[events]" href="{{ galleryimage.path }}" class="portfolio-box">
+                    <div class="galleryHolder" style="background:url('{{ galleryimage.path }}')"></div>
+                </a>
+            </div>
+			{% endfor %}
+        </div>
+    </div>
+	<style>
+		.galleryHolder{height:250px;filter:{{thisSection.imagesStyle}}(1);-webkit-transition: all 0.6s ease;}
+		#gallery a:hover .galleryHolder{filter:none}
+	</style>
+</section>

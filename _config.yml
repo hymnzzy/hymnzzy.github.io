@@ -5,6 +5,15 @@ description: Official Website for Board Gamers of Hyderabad
 author: Himanshu
 version: v1
 header_title: BGH
+fonts:
+  heading: Oswald
+  content: Roboto
+  
+defaults:
+  - scope:
+      path: "eventImages"
+    values:
+      image: true
 
 #Social Media Profile
 social_media:
