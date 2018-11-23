@@ -32,7 +32,7 @@ sections:
         link: ''
       - name: Meetup
         link: "/twincityBGC"
-      widgetURL: https://meetu.ps/3jyNsc
+      widgetURL: http://meetu.ps/3jyND8
     - name: Hyderabad Board Gamers' Club
       platforms:
       - name: Facebook
@@ -43,7 +43,7 @@ sections:
         link: ''
       - name: Meetup
         link: "/hydBGC"
-      widgetURL: https://meetu.ps/3jyNzv
+      widgetURL: https://meetu.ps/3jyND7
     
   - name: Games We Play
     heading: Games We Play

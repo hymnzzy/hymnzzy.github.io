@@ -14,15 +14,15 @@
 						<img src="/images/{{group.name}}.png" />
 						<h2>{{group.name}}</h2>
 					</div>
-					<div class="col-xs-6 groupLinks">
+					<div class="col-xs-4 groupLinks">
 						{% for platform in group.platforms %}
 						{% if platform.link != '' %}
 						<a href="{{ site.sociallinks[platform.name] | append: platform.link }}" target="_blank"><i class="fab fa-2x fa-{{platform.name | slugify}} wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i><p>{{ platform.link }}</p></a>
 						{% endif %}
 						{% endfor %}
 					</div>
-					<div class="col-xs-6 groupEvents">
-						<iframe width="275" height="570" src="{{group.widgetURL}}"></iframe>
+					<div class="col-xs-8 groupEvents">
+						<iframe width="275" height="515" src="{{group.widgetURL}}" frameborder="0"></iframe>
 					</div>
 				</div>
 			</div>
