@@ -19,9 +19,9 @@ defaults:
 #Social Media Profile
 sociallinks:
   Facebook: https://www.facebook.com
-  Instagram: https://www.facebook.com
-  WhatsApp: https://www.facebook.com
-  Meetup: https://www.facebook.com
+  Instagram: https://www.instagram.com
+  WhatsApp: https://www.whatsapp.com
+  Meetup: https://www.meetup.com
 
 # Build settings
 markdown: kramdown
