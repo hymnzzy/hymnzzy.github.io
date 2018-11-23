@@ -8,7 +8,7 @@ sections:
  
  - name: Who We Are
    heading: Who We Are
-   content:So join us, for a legen(waitforit)dary time!
+   content: So join us, for a legen(waitforit)dary time!
  
  - name: Games We Play
    heading: Games We Play
