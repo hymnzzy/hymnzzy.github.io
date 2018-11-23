@@ -17,7 +17,7 @@
 						<div class="col-xs-12 col-md-4 groupLinks">
 							{% for platform in group.platforms %}
 							{% if platform.link != '' %}
-							<a href="{{ site.sociallinks[platform.name] | append: platform.link }}" target="_blank"><i class="fab fa-2x fa-{{platform.name | slugify}} wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i><p>{{ platform.link }}</p></a>
+							<a href="{{ site.sociallinks[platform.name] | append: platform.link }}" target="_blank"><i class="fab fa-4x fa-{{platform.name | slugify}} wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i><p>{{ platform.link }}</p></a>
 							{% endif %}
 							{% endfor %}
 						</div>
