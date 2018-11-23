@@ -155,7 +155,7 @@ header {
     min-height: auto;
     @include background-cover;
     background-position: center;
-    background-image: url('../backgrounds/header.jpg');
+    background-image: url('..images/header.jpg');
     text-align: center;
     color: white;
 	.headerLayer {
@@ -367,17 +367,20 @@ body {
     -webkit-tap-highlight-color: $theme-dark;
 }
 
-.groupLinks{
-	* {
-		color:white!important;
-	};
-	a {
-		display: block;
+.ourGroups{
+	text-align: center;
+	.groupLinks{
+		* {
+			color:white!important;
+		};
+		a {
+			display: block;
+		}
+		i,p{
+			display: inline-block;
+			line-height: 2em;
+			font-size: 1.5em;
+			margin-right: 0.5em;
+		};
 	}
-	i,p{
-	    display: inline-block;
-		line-height: 2em;
-		font-size: 1.5em;
-		margin-right: 0.5em;
-	};
 }
