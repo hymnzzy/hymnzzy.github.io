@@ -12,20 +12,6 @@ defaults:
     values:
       image: true
 
-#Social Media Profile
-social_media:
- - name: facebook
-   link:
-   
- - name: twitter
-   link:
-   
- - name: whatsapp
-   link:
-   
- - name: meetup
-   link:
-#end
 
 # Build settings
 markdown: kramdown
