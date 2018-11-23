@@ -369,6 +369,7 @@ body {
 
 .bg-groups{
 	background: black;
+	color: white;
 	text-align: center;
 	.groupInfo{
 		margin-bottom: 2em auto;
@@ -377,6 +378,7 @@ body {
 		}
 	}
 	.groupLinks{
+		margin: 2em 0;
 		* {
 			color:white!important;
 		};
