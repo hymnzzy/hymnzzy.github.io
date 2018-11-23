@@ -2,12 +2,38 @@ title: The Board Gamers of Hyderabad
 email: boardgamersofhyderabad@gmail.com
 description: Official Website for Board Gamers of Hyderabad
 
-social_links:
-    -   platform: facebook
-        link:
+sections:
+    -   main: Home
+        heading: Board Gamers of Hyderabad
+        content: Welcome to most happening club in Hyderabad
     
-    -   platform: whatsapp
-        link:
-        
-    -   platform: email
-        link: mail-to:boardgamersofhyderabad@gmail.com
+    -   name: About Us
+        heading: Who We Are
+        content: |
+            A couple of years ago, we found out that there’s more to board gaming than childhood memories of Monopoly, Snakes and Ladders, Uno and Pictionary. Now, with our cards, Meeples and our dice, we conquer unknown lands, create species, build businesses, develop our civilizations, and spread the magic!
+            
+            We are passionate.
+            We are competitive.
+            We are the Twin City Board Gamers, and we invite Tabletop enthusiasts to join our clan to spread the awesomeness.
+            
+            Playing for the first time? No worries. We brief all players new to our tables before we begin.
+            
+            So join us, for a legen(waitforit)dary time!
+    
+    -   name: Our Activities
+        heading: Games We Play
+        content: 
+            -   name: Worker Placement
+                bggLink: https://boardgamegeek.com/boardgamemechanic/2082/worker-placement
+            
+            -   name: Deck Building
+                bggLink: https://boardgamegeek.com/boardgamemechanic/2664/deck-pool-building
+                
+            -   name: Party
+                bggLink: https://boardgamegeek.com/partygames
+                
+            -   name: Area Manipulation
+                bggLink: https://boardgamegeek.com/thread/1542580/dice-manipulation
+                
+    -   name: Find Us
+        heading: How To Reach Us

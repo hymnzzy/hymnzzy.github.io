@@ -2,9 +2,15 @@
 title: Board Gamers of Hyderabad
 email: boardgamersofhyderabad@gmail.com
 description: Official Website for Board Gamers of Hyderabad
-opening_line: Welcome to most happening club in Hyderabad
 author: Himanshu
 version: v1
+
+header_title: BGH
+defaults:
+  - scope:
+      path: "_images"
+    values:
+      image: true
 
 #Social Media Profile
 social_media:
@@ -15,6 +21,9 @@ social_media:
    link:
    
  - name: whatsapp
+   link:
+   
+ - name: meetup
    link:
 #end
 
