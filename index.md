@@ -20,7 +20,9 @@ sections:
       Playing for the first time? No worries. We brief all players new to our tables before we begin.
       
       So join us, for a legen(waitforit)dary time!
-    
+  
+  - name: Our Groups
+    heading: Our Groups
     groups:
     - name: Twin City Board Gamers' Club
       platforms:

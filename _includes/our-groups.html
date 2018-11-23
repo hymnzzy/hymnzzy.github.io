@@ -1,0 +1,32 @@
+{% for section in page.sections %}{% if section.name == 'Our Groups' %}{% assign thisSection = section %}{% endif %}{% endfor %}
+<section class="bg-primary-groups" id="{{ thisSection.name | slugify }}">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 text-center">
+                <h2 class="section-heading">{{ thisSection.heading }}</h2>
+            </div>
+			<div class="row ourGroups">
+				{% for group in thisSection.groups %}
+				<div class="col-xs-12 col-sm-6">
+					<div class="row">
+						<div class="col-xs-12 groupInfo">
+							<img src="../images/{{group.name}}.png" />
+							<h3>{{group.name}}</h3>
+						</div>
+						<div class="col-xs-12 col-md-4 groupLinks">
+							{% for platform in group.platforms %}
+							{% if platform.link != '' %}
+							<a href="{{ site.sociallinks[platform.name] | append: platform.link }}" target="_blank"><i class="fab fa-2x fa-{{platform.name | slugify}} wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i><p>{{ platform.link }}</p></a>
+							{% endif %}
+							{% endfor %}
+						</div>
+						<div class="col-xs-12 col-md-8 groupEvents">
+							<iframe width="275" height="515" src="{{group.widgetURL}}" frameborder="0"></iframe>
+						</div>
+					</div>
+				</div>
+				{% endfor %}
+			</div>
+        </div>
+    </div>
+</section>
