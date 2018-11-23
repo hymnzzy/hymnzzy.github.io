@@ -367,7 +367,7 @@ body {
     -webkit-tap-highlight-color: $theme-dark;
 }
 
-.ourGroups{
+.bg-groups{
 	text-align: center;
 	.groupInfo{
 		margin-bottom: 2em auto;
@@ -381,12 +381,10 @@ body {
 		};
 		a {
 			display: block;
-		}
-		i,p{
-			display: inline-block;
+		};
+		p{
 			line-height: 2em;
 			font-size: 1.5em;
-			margin-right: 0.5em;
 		};
 	}
 }
