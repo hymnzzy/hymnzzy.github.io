@@ -1,4 +1,4 @@
-{% for section in sections %}{% if section.name == 'Home' %}{% assign thisSection = section %}{% endif %}{% endfor %}
+{% for section in page.sections %}{% if section.name == 'Home' %}{% assign thisSection = section %}{% endif %}{% endfor %}
 <header id="home">
     <div class="header-content">
         <div class="header-content-inner">
