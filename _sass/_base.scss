@@ -371,5 +371,10 @@ body {
 	* {
 		color:white!important;
 	};
-	i,p{float:left}
+	i,p{
+	    display: inline-block;
+		line-height: 3em;
+		font-size: 1.5em;
+		margin-right: 0.5em;
+	};
 }
