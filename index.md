@@ -21,6 +21,28 @@ sections:
       
       So join us, for a legen(waitforit)dary time!
     
+    groups:
+    - name: Twin City Board Gamers' Club
+      platforms:
+      - name: Facebook
+        link: "/twincityBGC"
+      - name: Instagram
+        link: "/twincityBGC"
+      - name: WhatsApp
+        link: ''
+      - name: Meetup
+        link: "/twincityBGC"
+    - name: Hyderabad Board Gamers' Club
+      platforms:
+      - name: Facebook
+        link: "/hydBGC"
+      - name: Instagram
+        link: "/hydBGC"
+      - name: WhatsApp
+        link: ''
+      - name: Meetup
+        link: "/hydBGC"	
+    
   - name: Games We Play
     heading: Games We Play
     content:

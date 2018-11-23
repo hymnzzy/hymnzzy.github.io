@@ -8,27 +8,14 @@ header_title: BGH
 fonts:
   heading: Oswald
   content: Roboto
-  
 defaults:
-  - scope:
-      path: "eventImages"
-    values:
-      image: true
-
-#Social Media Profile
-social_media:
- - name: facebook
-   link:
-   
- - name: twitter
-   link:
-   
- - name: whatsapp
-   link:
-   
- - name: meetup
-   link:
-#end
-
-# Build settings
+- scope:
+    path: eventImages
+  values:
+    image: true
+socialLinks:
+  Facebook: https://www.facebook.com
+  Instagram: https://www.facebook.com
+  WhatsApp: https://www.facebook.com
+  Meetup: https://www.facebook.com
 markdown: kramdown

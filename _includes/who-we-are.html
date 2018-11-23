@@ -6,8 +6,27 @@
                 <h2 class="section-heading">{{ thisSection.heading }}</h2>
                 <hr class="light">
 				<p>{{ thisSection.content | newline_to_br }}</p>
-                <a href="" class="next btn btn-default btn-xl">More!</a>
             </div>
+			{% for group in thisSection.groups %}
+			<div class="col-xs-11 col-xs-offset-1 col-sm-4 col-sm-offset-1">
+				<div class="row">
+					<div class="col-xs-12 groupInfo">
+						<img src="/images/{{group.name}}.png" />
+						<h2>{{group.name}}</h2>
+					</div>
+					<div class="col-xs-4 col-xs-offset-1 groupLinks">
+						{% for platform in platforms %}
+						{% if platform.link %}
+						<a href="{{site[platform.name]} | append: platform.link }" target="_blank"><i class="fa fa-4x fa-{{platform.name | slugify}} wow bounceIn text-primary" style="visibility: visible; animation-name: bounceIn;"></i><p>{{ platform.link }}</p></a>
+						{% endif %}
+						{% endfor %}
+					</div>
+					<div class="col-xs-4 col-xs-offset-1 groupEvents">
+						<meetup widget>blah blah blah blah</meetup>
+					</div>
+				</div>
+			</div>
+			{% endfor %}
         </div>
     </div>
 </section>
