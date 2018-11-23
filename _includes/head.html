@@ -11,7 +11,7 @@
     <!-- Custom Fonts -->
     <link href="https://fonts.googleapis.com/css?family={% if site.fonts.heading %}{{site.fonts.heading | replace:' ','+'}}{%else %}Patua+One{% endif %}|{% if site.fonts.content %}{{site.fonts.content | replace:' ','+'}}{%else %}Monsterrat{% endif %}" rel="stylesheet">
     <link rel="stylesheet" href="css/animate.min.css" type="text/css">
-    <link rel="stylesheet" href="css/main.css" type="text/css">
+    <link rel="stylesheet" href="css/main.css?v={{ site.time | date: "%s" }}" type="text/css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
 	<link rel="stylesheet" href="prettyPhoto/styles.css" type="text/css">
     <style>
