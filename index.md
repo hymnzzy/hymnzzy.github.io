@@ -20,7 +20,7 @@ sections:
       Playing for the first time? No worries. We brief all players new to our tables before we begin.
       
       So join us, for a legen(waitforit)dary time!
-	  Do read out Code of conduct [here:] ("/code-of-conduct")
+	  `Do read out Code of conduct [here:] ("/code-of-conduct")
   
   - name: Our Groups
     heading: Our Groups
