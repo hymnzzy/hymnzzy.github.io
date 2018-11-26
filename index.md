@@ -7,6 +7,7 @@ sections:
     content: Welcome to most happening club in Hyderabad
     
   - name: Who We Are
+    keep_md: true
     heading: Who We Are
     content: |-
       A couple of years ago, we found out that there’s more to board gaming than childhood memories of Monopoly, Snakes and Ladders, Uno and Pictionary. Now, with our cards, Meeples and our dice, we conquer unknown lands, create species, build businesses, develop our civilizations, and spread the magic!
