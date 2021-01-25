@@ -5,6 +5,9 @@
          url('../fonts/EBGaramond.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
+html.dark{
+    background-color: black !important;
+}
 .background {
     position: absolute;
     display: block;
@@ -36,9 +39,6 @@ section{
     max-height: 88vh;
     overflow-y: auto;
     height: 88vh;
-}
-body.dark{
-    background-color: black !important;
 }
 .page-footer{
     position: fixed;
