@@ -1,6 +1,6 @@
 let transitioning = false;
 
-window.onload = function() {
+/* window.onload = function() {
     Particles.init({
         maxParicles: 3,
         sizeVariations: 3,
@@ -9,7 +9,7 @@ window.onload = function() {
         speed: 0.25,
         connectParticles: true
     });
-};
+}; */
 
 $('body:not(.transitioning)').on('mousewheel',function(e){
     let cS = $('section:visible'),
