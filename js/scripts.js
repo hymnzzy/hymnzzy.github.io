@@ -1,16 +1,5 @@
 let transitioning = false;
 
-$('document').on('ready',function(){
-    Particles.init({
-        maxParicles: 3,
-        sizeVariations: 3,
-        selector: '.background',
-        color: ['#888888'],
-        speed: 0.25,
-        connectParticles: true
-    })
-})
-
 $('body:not(.transitioning)').on('mousewheel',function(e){
     let cS = $('section:visible'),
         nS = $(cS).next('section'),
@@ -33,3 +22,22 @@ $('body:not(.transitioning)').on('mousewheel',function(e){
         })
     }
 });
+
+(function(){
+    Particles.init({
+        selector: '.background',
+        color: ['#888888'],
+        speed: 0.25,
+        connectParticles: false,
+        responsive: [{
+            breakpoint: 768,
+            options: { maxParticles: 200, connectParticles: false }
+        }, {
+            breakpoint: 425,
+            options: { maxParticles: 100, connectParticles: false }
+        }, {
+            breakpoint: 320,
+            options: { maxParticles: 0 }
+        }]
+    })
+})();
