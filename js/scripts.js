@@ -28,7 +28,7 @@ $('body:not(.transitioning)').on('mousewheel',function(e){
         selector: '.background',
         color: ['#888888'],
         speed: 0.25,
-        connectParticles: false,
+        connectParticles: true,
         responsive: [{
             breakpoint: 768,
             options: { maxParticles: 200, connectParticles: false }
