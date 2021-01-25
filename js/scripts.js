@@ -1,6 +1,6 @@
 let transitioning = false;
 
-/* window.onload = function() {
+$('document').on('ready',function(){
     Particles.init({
         maxParicles: 3,
         sizeVariations: 3,
@@ -8,8 +8,8 @@ let transitioning = false;
         color: ['#888888'],
         speed: 0.25,
         connectParticles: true
-    });
-}; */
+    })
+})
 
 $('body:not(.transitioning)').on('mousewheel',function(e){
     let cS = $('section:visible'),
