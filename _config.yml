@@ -1,28 +1,12 @@
 # Site settings
-title: Board Gamers of Hyderabad
-email: boardgamersofhyderabad@gmail.com
-description: Official Website for Board Gamers of Hyderabad
-author: Himanshu
-version: v1
-header_title: BGH
-fonts:
-  heading: Oswald
-  content: Roboto
+
 
 #Event images
-defaults:
-  - scope:
-      path: "eventImages"
-    values:
-      image: true
+
 
 #Social Media Profile
-sociallinks:
-  Facebook: https://www.facebook.com/
-  Instagram: https://www.instagram.com/
-  WhatsApp: https://www.whatsapp.com/
-  Meetup: https://www.meetup.com/
+
 
 # Build settings
 markdown: kramdown
-theme: jekyll-theme-merlot
+theme: custom
