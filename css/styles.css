@@ -97,13 +97,15 @@ nav#nav-header .nav-wrapper{
     font-family: 'EBGaramond';
 }
 
-#content-holder{
-	height: 100vh;
-	overflow-y: scroll;
-	scroll-behavior: smooth;
-	scroll-snap-type: mandatory;
-	scroll-snap-points-y: repeat(100vh);
-	scroll-snap-type: y mandatory;
+@media only screen and (min-width: 601px) {
+	#content-holder{
+		height: 100vh;
+		overflow-y: scroll;
+		scroll-behavior: smooth;
+		scroll-snap-type: mandatory;
+		scroll-snap-points-y: repeat(100vh);
+		scroll-snap-type: y mandatory;
+	}
 }
 section{
     height: 100vh;
