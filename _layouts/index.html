@@ -7,8 +7,12 @@
 		<!-- End Google Tag Manager (noscript) -->
 		
 		{% include nav.html %}
-		{% include index-intro-content.html %}
-		{% include index-about-me-content.html %}
+
+		<div id="content-holder">
+			{% include index-intro-content.html %}
+			{% include index-about-me-content.html %}
+		</div>
+		
 		{% include footer.html %}
 	</body>
 </html>
