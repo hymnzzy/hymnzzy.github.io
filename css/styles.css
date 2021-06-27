@@ -30,7 +30,7 @@ html.dark{
     background-color: black !important;
 }
 .background {
-    position: absolute;
+    position: fixed;
     display: block;
     top: 0;
     left: 0;
