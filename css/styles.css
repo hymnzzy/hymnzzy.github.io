@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
 
 @font-face {
     font-family: 'EBGaramond';
@@ -7,27 +7,38 @@
          url('../fonts/EBGaramond.ttf')  format('truetype'), /* Safari, Android, iOS */
 }
 
-#content-holder::-webkit-scrollbar {
+body::-webkit-scrollbar {
 	width: 7.5px;
 	border-radius: 5px;
 }
-#content-holder::-webkit-scrollbar-track {
+body::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 10px;
 }
-#content-holder::-webkit-scrollbar-thumb {
+body::-webkit-scrollbar-thumb {
 	background: rgba(128,128,128,0.5); 
     border-radius: 10px;
 }
-#content-holder::-webkit-scrollbar-thumb:hover {
+body::-webkit-scrollbar-thumb:hover {
 	background: rgba(0,0,0,0.5);
 }
-.dark #content-holder::-webkit-scrollbar-thumb:hover {
+.dark section::-webkit-scrollbar-thumb:hover {
 	background: rgba(255,255,255,0.5);
 }
 
+span.invert{
+	color: #888888;
+}
+#nav-links{
+	display: flex;
+	grid-gap: 25px;
+	align-items: center;
+}
+html{
+	background: #fbefdf
+}
 html.dark{
-    background-color: black !important;
+    background-color: black;
 }
 .background {
     position: fixed;
@@ -36,27 +47,145 @@ html.dark{
     left: 0;
     z-index: -1;
 }
-.progress{
-    position: absolute;
-    z-index: -1;
-    top: 0;
-    left: 0;
-    width: 100%;
-}
 body{
     height: 100vh !important;
-    font-family: 'Rubik','Helvetica','Arial';
+    font-family: 'Helvetica','Arial';
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
+	overflow-x: hidden;
+	font-smooth: never;
 }
 
 .container {
     margin: 0 auto;
     max-width: 1280px;
     width: 90%;
+	position: relative
 }
-
+nav#nav-header {
+    height: 8vh;
+    position: fixed;
+    width: 100vw;
+    z-index: 15;
+	display: flex;
+	align-items: center;
+	background: #fbefdf;
+}
+.dark nav#nav-header{
+	background: black;
+}
+nav#nav-header .nav-wrapper{
+	display: grid;
+	grid-template-columns: 2fr 10fr;
+}
+nav#nav-header a{
+	text-decoration: none;
+}
+#menu{
+	display:none;
+}
+@media only screen and (max-width: 750px){
+	#nav-links-container{
+		display: none;
+	}
+	#nav-links{
+		grid-gap: 15px;
+		flex-flow: column;
+		position: absolute;
+		left: -5.5%;
+		top: -4vh;
+		background: #fbefdf;
+		z-index: 100;
+		height: 100vh;
+		font-size: 2rem;
+		justify-content: center;
+		width: 100vw;
+	}
+	#nav-links a{
+		font-size: 2rem !important;
+	}
+	#menu {
+		width: 30px;
+		height: 15px;
+		position: absolute;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: .5s ease-in-out;
+		-moz-transition: .5s ease-in-out;
+		-o-transition: .5s ease-in-out;
+		transition: .5s ease-in-out;
+		cursor: pointer;
+		right: 0;
+		top: 0;
+		z-index: 100;
+		display:block;
+	}
+	#menu span {
+		display: block;
+		position: absolute;
+		height: 3px;
+		width: 100%;
+		background: black;
+		border-radius: 9px;
+		opacity: 1;
+		left: 0;
+		-webkit-transform: rotate(0deg);
+		-moz-transform: rotate(0deg);
+		-o-transform: rotate(0deg);
+		transform: rotate(0deg);
+		-webkit-transition: .25s ease-in-out;
+		-moz-transition: .25s ease-in-out;
+		-o-transition: .25s ease-in-out;
+		transition: .25s ease-in-out;
+	}
+	.dark #menu span{
+		background: white;
+	}
+	#menu span:nth-child(1) {
+		top: 0px;
+		-webkit-transform-origin: left center;
+		-moz-transform-origin: left center;
+		-o-transform-origin: left center;
+		transform-origin: left center;
+	}
+	#menu span:nth-child(2) {
+		top: 9px;
+		-webkit-transform-origin: left center;
+		-moz-transform-origin: left center;
+		-o-transform-origin: left center;
+		transform-origin: left center;
+	}
+	#menu span:nth-child(3) {
+		top: 18px;
+		-webkit-transform-origin: left center;
+		-moz-transform-origin: left center;
+		-o-transform-origin: left center;
+		transform-origin: left center;
+	}
+	#menu.open span:nth-child(1) {
+		-webkit-transform: rotate(45deg);
+		-moz-transform: rotate(45deg);
+		-o-transform: rotate(45deg);
+		transform: rotate(45deg);
+		top: 0px;
+		left: 3px;
+	}
+	#menu.open span:nth-child(2) {
+	  width: 0%;
+	  opacity: 0;
+	}
+	#menu.open span:nth-child(3) {
+	  -webkit-transform: rotate(-45deg);
+	  -moz-transform: rotate(-45deg);
+	  -o-transform: rotate(-45deg);
+	  transform: rotate(-45deg);
+	  top: 21px;
+	  left: 3px;
+	}
+}
 @media only screen and (min-width: 601px) {
     .container {
         width: 85%;
@@ -69,77 +198,152 @@ body{
     }
 }
 
-nav#nav-header {
-    height: 8vh;
-    position: fixed;
-    width: calc(100% - 7.5px);
-    z-index: 10;
-    background: rgba(255,255,255,0.75);
+.content-for-intro{
+	position:absolute;
+	width: 100%;
+	left: 0;
+	bottom: 20vh;
+}
+.content-for-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 25px;
+    height: 100%;
+}
+.content-for-about > div {
+    min-height: 50vh;
+    align-self: center;
+    border: 1px solid black;
+    padding: 25px;
+    background: rgba(128, 128, 128, 0.25);
+}
+.dark .content-for-about > div {
+	border-color: white;
+}
+
+#exp-years-holder {
+	text-align: center;
+}
+
+.expertise-bar{
+	background: rgba(136, 136, 136, 0.533);
+	height: 5px;
+	position: relative;
+}
+.expertise-bar[data-expertise]:after {
+    content: '';
+    background: black;
+    height: 5px;
+    position: absolute;
+	width: 0%;
+    transition: all ease-in-out 1s;
+}
+.dark .expertise-bar[data-expertise]:after {
+    background: white;
+}
+.active .expertise-bar[data-expertise="Digital Marketing"]:after{ width: 95%; }
+.active .expertise-bar[data-expertise="Branding"]:after{ width: 90%; }
+.active .expertise-bar[data-expertise="Digital Transformation"]:after{ width: 85%; }
+.active .expertise-bar[data-expertise="Program Management"]:after{ width: 80%; }
+.active .expertise-bar[data-expertise="Product Management"]:after{ width: 75%; }
+.active .expertise-bar[data-expertise="Offline Marketing"]:after{ width: 60%; }
+
+#exp-skills-holder{
+	perspective: 150px;
+}
+
+#skills{
 	display: flex;
-	align-items: center;
-	backdrop-filter: blur(10px);
+    flex-wrap: wrap;
+    grid-gap: 15px;
+    justify-content: center;
 }
-.dark nav#nav-header{
-	background: rgba(0,0,0,0.75);
+#skills .skill{
+	padding: 2.5px 5px;
+    border-radius: 5px;
+	background: #040404 !important;
 }
-nav#nav-header .nav-wrapper{
-	display: grid;
-	grid-template-columns: 2fr 10fr;
+
+@media only screen and (max-width: 601px){
+	.content-for-about {
+	    grid-template-columns: 1fr;
+	}
 }
-#nav-logo img{
-	display: block;
-	border-radius: 50%;
-}
-.nav-wrapper > a{
-    height: 64px;
-}
+
 .description{
     font-family: 'EBGaramond';
 }
 
-@media only screen and (min-width: 601px) {
-	#content-holder{
-		height: 100vh;
-		overflow-y: scroll;
-		scroll-behavior: smooth;
-		scroll-snap-type: mandatory;
-		scroll-snap-points-y: repeat(100vh);
-		scroll-snap-type: y mandatory;
-	}
-}
 section{
+	position: absolute;
+	contain: content;
     height: 100vh;
+	width: 100vw;
+	min-height: 100vh;
+	background: none;
+	transition: transform ease-in-out .75s,
+				opacity ease-in-out .75s;
+	overflow-y: hidden;
 	display: flex;
-	flex-flow: column;
-	justify-content: center;
-	scroll-snap-align: start;
+	opacity: 0
+}
+section.active{
+	overflow-y: auto;
+	height: auto;
+	opacity: 1;
 }
 section > *:last-of-type {
-    margin-bottom: 8vh;
+    margin-bottom: 4vh;
 }
 section > *:first-of-type {
     margin-top: 8vh;
 }
+
+div.waves{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+	opacity: 0.5;
+}
 .page-footer{
     position: fixed;
-    width: 100%;
+    width: 100vw;
     bottom: 0;
     height: 4vh;
     line-height: 4vh;
+	z-index: 10;
 }
-
-::selection{
-    background: black !important;
-    color: white !important;
+#scroll-level-holder{
+	position: fixed;
+    top: 50%;
+    left: calc(100vw - 2rem);
+    width: 5px;
+    height: 50vh;
+    background: #888888;
+    z-index: 10;
+    transform: translateY(-50%);
 }
-.dark ::selection{
-    background: white !important;
-    color: black !important;
+#scroll-level{
+	transition: all ease-in-out .75s;
+	background: black;
+}
+.dark #scroll-level{
+	background: white;
+}
+::selection,mark{
+    background: #040404 !important;
+    color: #fbefdf !important;
+}
+.dark ::selection,.dark mark{
+    background: #fafafa !important;
+    color: #040404 !important;
 }
 
 .has-text{
     color: #040404 !important;
-    /*line-height: 1em !important;*/
 }
 .has-text a{
     color: inherit !important;
