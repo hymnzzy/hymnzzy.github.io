@@ -1,12 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
 
-@font-face {
-    font-family: 'EBGaramond';
-    src: url('../fonts/EBGaramond.ttf'); /* IE9 Compat Modes */
-    src: url('../fonts/EBGaramond.ttf') format('embedded-opentype'), /* IE6-IE8 */
-         url('../fonts/EBGaramond.ttf')  format('truetype'), /* Safari, Android, iOS */
-}
-
 body::-webkit-scrollbar {
 	width: 7.5px;
 	border-radius: 5px;
@@ -241,12 +234,6 @@ nav#nav-header a{
 .dark .expertise-bar[data-expertise]:after {
     background: white;
 }
-.active .expertise-bar[data-expertise="Digital Marketing"]:after{ width: 95%; }
-.active .expertise-bar[data-expertise="Branding"]:after{ width: 90%; }
-.active .expertise-bar[data-expertise="Digital Transformation"]:after{ width: 85%; }
-.active .expertise-bar[data-expertise="Program Management"]:after{ width: 80%; }
-.active .expertise-bar[data-expertise="Product Management"]:after{ width: 75%; }
-.active .expertise-bar[data-expertise="Offline Marketing"]:after{ width: 60%; }
 
 #exp-skills-holder{
 	perspective: 150px;
@@ -268,10 +255,6 @@ nav#nav-header a{
 	.content-for-about {
 	    grid-template-columns: 1fr;
 	}
-}
-
-.description{
-    font-family: 'EBGaramond';
 }
 
 section{
