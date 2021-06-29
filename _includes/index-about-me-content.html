@@ -12,7 +12,7 @@
                 {% for expertise in site.about.expertise %}
                 <h3 class="has-text text-large mt-2 mb-1">{{ expertise.name }}</h3>
                 <div class="expertise-bar" data-expertise="{{ expertise.name }}" data-level="{{ expertise.level }}"></div>
-                {% capture expertise-bar-levels %}.active .expertise-bar[data-expertise="{{ expertise.name }}"]:after{ width: {{ expertise.level }} }{% endcapture %}
+                {% capture expertise-bar-levels %}{{ expertise-bar-levels }}.active .expertise-bar[data-expertise="{{ expertise.name }}"]:after{ width: {{ expertise.level }} }{% endcapture %}
                 {% endfor %}
             </div>
             <div id="exp-skills-holder">
