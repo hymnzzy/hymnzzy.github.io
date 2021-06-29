@@ -248,7 +248,10 @@ nav#nav-header a{
 #skills .skill{
 	padding: 2.5px 5px;
     border-radius: 5px;
-	background: #040404 !important;
+	background: #050505;
+}
+.dark #skills .skill{
+	background: #fafafa
 }
 
 @media only screen and (max-width: 601px){
@@ -317,16 +320,16 @@ div.waves{
 	background: white;
 }
 ::selection,mark{
-    background: #040404 !important;
+    background: #050505 !important;
     color: #fbefdf !important;
 }
 .dark ::selection,.dark mark{
     background: #fafafa !important;
-    color: #040404 !important;
+    color: #050505 !important;
 }
 
 .has-text{
-    color: #040404 !important;
+    color: #050505 !important;
 }
 .has-text a{
     color: inherit !important;
