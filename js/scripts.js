@@ -15,9 +15,7 @@ $('body')
         pS = $(cS).prev('section');
 	
 	if( e.originalEvent.deltaY > 0 && nS.length && ($(window).scrollTop() + $(window).height() >= $(document).height()) ){
-        totalScrolled = 0;
-		if( !nS.length ) return false;
-		setScrollLevel(1);
+        setScrollLevel(1);
         transitioning = true;
 		$('body').css({ 'overflow-y':'hidden' });
 		await new Promise( r => setTimeout(r,100) );
@@ -29,8 +27,6 @@ $('body')
         transitioning = false;
     }
     if( e.originalEvent.deltaY < 0 && pS.length && $(window).scrollTop() <= 0 ){
-		totalScrolled = 0;
-        if( !pS.length ) return false;
 		setScrollLevel(-1);
         transitioning = true;
 		$('body').css({ 'overflow-y':'hidden' })
@@ -85,9 +81,6 @@ $('body')
 	var camera, scene, renderer;
 	
 	var particles, particle, count = 0;
-
-	var windowHalfX = window.innerWidth / 2;
-	var windowHalfY = window.innerHeight / 2;
 
 	init();
 	animate();
