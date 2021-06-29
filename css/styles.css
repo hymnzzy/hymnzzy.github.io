@@ -347,7 +347,7 @@ div.waves{
 .text-xlarge{ font-size: 3.75vh !important; }
 .text-large{ font-size: 2.625vh !important; }
 .text-medium{ font-size: 2.175vh !important; }
-.text-small{ font-size: 1.725vh !important; }
+.text-small{ font-size: minmax(12px,1.725vh) !important; }
 
 .pos-rel{
     position: relative !important;
