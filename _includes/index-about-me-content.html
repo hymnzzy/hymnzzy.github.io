@@ -2,48 +2,24 @@
     <div class="container">
         <div class="content-for-about">
             <div id="exp-years-holder">
-                <p class="has-text bold mt-2 mb-2" style="font-size: clamp(20vh,20vw,30vh);">7</p>
+                <p class="has-text bold mt-2 mb-2" style="font-size: clamp(20vh,20vw,30vh);">{{ site.about.years }}</p>
                 <p class="has-text bold text-medium caps mt-1 mb-1">Years</p>
                 <p class="has-text bold text-medium caps mt-1 mb-1">Working</p>
                 <p class="has-text bold text-medium caps mt-1 mb-1">Experience</p>
             </div>
             <div id="exp-expertise-holder">
                 <h2 class="has-text bold text-xlarge mt-2 mb-2">Expertise</h2>
-                <h3 class="has-text text-large mt-2 mb-1">Digital Marketing</h3>
-                <div class="expertise-bar" data-expertise="Digital Marketing"></div>
-                <h3 class="has-text text-large mt-2 mb-1">Branding</h3>
-                <div class="expertise-bar" data-expertise="Branding"></div>
-                <h3 class="has-text text-large mt-2 mb-1">Digital Transformation</h3>
-                <div class="expertise-bar" data-expertise="Digital Transformation"></div>
-                <h3 class="has-text text-large mt-2 mb-1">Program Management</h3>
-                <div class="expertise-bar" data-expertise="Program Management"></div>
-                <h3 class="has-text text-large mt-2 mb-1">Product Management</h3>
-                <div class="expertise-bar" data-expertise="Product Management"></div>
-                <h3 class="has-text text-large mt-2 mb-1">Offline Marketing</h3>
-                <div class="expertise-bar" data-expertise="Offline Marketing"></div>
+                {% for expertise in site.about.expertise %}
+                <h3 class="has-text text-large mt-2 mb-1">{{ expertise.name }}</h3>
+                <div class="expertise-bar" data-expertise="{{ expertise.name }}" data-level="{{ expertise.level }}"></div>
+                {% endfor %}
             </div>
             <div id="exp-skills-holder">
                 <h2 class="has-text bold text-xlarge mt-2 mb-2">Skills</h2>
                 <div id="skills">
-                    <span class="has-text text-small skill"><mark>SEO</mark></span>
-                    <span class="has-text text-small skill"><mark>SEM</mark></span>
-                    <span class="has-text text-small skill"><mark>SMM</mark></span>
-                    <span class="has-text text-small skill"><mark>Retargeting</mark></span>
-                    <span class="has-text text-small skill"><mark>Lead Management</mark></span>
-                    <span class="has-text text-small skill"><mark>E-Commerce</mark></span>
-                    <span class="has-text text-small skill"><mark>Marketing Research</mark></span>
-                    <span class="has-text text-small skill"><mark>Process Automation</mark></span>
-                    <span class="has-text text-small skill"><mark>Agency Management</mark></span>
-                    <span class="has-text text-small skill"><mark>AIDA Funnel</mark></span>
-                    <span class="has-text text-small skill"><mark>Strategic Planning</mark></span>
-                    <span class="has-text text-small skill"><mark>SWOT Analysis</mark></span>
-                    <span class="has-text text-small skill"><mark>Data Modelling</mark></span>
-                    <span class="has-text text-small skill"><mark>Data Modelling</mark></span>
-                    <span class="has-text text-small skill"><mark>Data Modelling</mark></span>
-                    <span class="has-text text-small skill"><mark>HTML / CSS3 / JS</mark></span>
-                    <span class="has-text text-small skill"><mark>Photoshop</mark></span>
-                    <span class="has-text text-small skill"><mark>Powershell</mark></span>
-                    <span class="has-text text-small skill"><mark>Modular Programming</mark></span>
+                    {% for skill in site.about.skills %}
+                    <span class="has-text text-small skill"><mark>{{ skill }}</mark></span>
+                    {% endfor %}
                 </div>
             </div>
         </div>
