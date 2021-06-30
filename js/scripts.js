@@ -14,8 +14,8 @@ async function scrollContent(dir){
         nS = $(cS).next('section'),
         pS = $(cS).prev('section'),
 		sC = cS.find('.section-content'),
-		atTop = sC.scrollTop() == 0,
-		atBottom = sC[0].scrollHeight - sC.scrollTop() == Math.floor( sC.outerHeight() );
+		atTop = sC.scrollTop() <= ( window.innerHeight / 20 ),
+		atBottom = sC[0].scrollHeight - sC.scrollTop() - sC.outerHeight() <= ( window.innerHeight / 20 );
 	
 	if( dir > 0 && atBottom && nS.length ){
         setScrollLevel(1);
