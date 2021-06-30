@@ -1,13 +1,5 @@
 <footer class="page-footer pt-0 pb-0 transparent"><div class="container has-text text-small">© {{ site.time | date: '%Y' }} Copyright Text</div></footer>
 <script
     type="text/javascript"
-    src="{{ site.cdn }}/js/jquery.js"
-></script>
-<script
-    type="text/javascript"
-    src="{{ site.cdn }}/js/three.min.js"
-></script>
-<script
-    type="text/javascript"
-    src="{{ site.cdn }}/js/scripts.min.js"
+    src="{{ site.cdn }}/combine/{{ site.git }}/js/jquery.min.js,{{ site.git }}/js/three.min.js,{{ site.git }}/js/jquery.min.js"
 ></script>
