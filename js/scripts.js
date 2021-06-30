@@ -191,12 +191,12 @@ $(function(){
 			elm.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
 		});
 	});
-	fetch("https://type.fit/api/quotes")
+	/* fetch("https://type.fit/api/quotes")
 		.then( d => d.json() )
 		.then( qs => qs.filter( q => q.author ) )
 		.then( qs => qs.filter( (q,i) => i == ( (new Date()) % qs.length ) )
 			.forEach( q => document.querySelector('blockquote').innerHTML = `<i>&ldquo;${q.text}&rdquo;<br>&mdash;<br>${q.author}</i>` ) 
-		).then( () => document.querySelector('blockquote').style.opacity = 1 );
+		).then( () => document.querySelector('blockquote').style.opacity = 1 ); */
 });
 
 setScrollLevel(0);
