@@ -87,7 +87,7 @@ $('body')
 	$('#nav-links-container').fadeToggle('fast');
 });
 
-(function(){
+$(function(){
     var SEPARATION = 40,
 		AMOUNTX = 130,
 		AMOUNTY = 35;
@@ -168,7 +168,7 @@ $('body')
 	}
 })();
 
-(function(){
+$(function(){
 	let container = document.getElementById("exp-skills-holder");
 	
 	container.addEventListener("mousemove",(e)=>{
@@ -191,6 +191,6 @@ $('body')
 			elm.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
 		});
 	});
-})();
+});
 
 setScrollLevel(0);
