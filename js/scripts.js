@@ -40,54 +40,54 @@ async function scrollContent(dir,swipe){
 	}
 }
 
-$(function(){
-	$('body')
-	.on('mousewheel',async function(e){
-		if( transitioning ) return false;
-		scrollContent(e.originalEvent.deltaY,false);
-	})
-	.on('touchstart',async function(e){
-		tS = e.originalEvent.touches[0].clientY;
-	})
-	.on('touchend',async function(e){
-		tS -= e.originalEvent.changedTouches[0].clientY;
-		if( transitioning || Math.abs(tS) < ( window.innerHeight / 10 ) ) return false;
-		scrollContent(tS,true);
-	})
-	.on('click','#nav-links a',async function(e){
-		e.preventDefault();
-		if( transitioning ) return false;
-		$('#menu:visible').click();
-		let cs = $(this).attr('href').replace('#',''),
-			found = false;
-		
-		if( $('section.active').attr('id') == cs ) return $('section.active').find('.section-content').scrollTop(0);
-		
-		transitioning = true;
-		
-		$('section').each(function(){
-			$(this).removeClass('active')
-			if( $(this).attr('id') == cs ) found = true;
-			if( !found ) {
-				$(this).css({ 'transform': 'translateY(-100%)' });
-			}
-			else if( $(this).attr('id') == cs ) {
-				$(this).find('.section-content').scrollTop(0);
-				$(this).css({ 'transform': 'translateY(0)' }).addClass('active');
-			}
-			else if( found && $(this).attr('id') != cs ) {
-				$(this).css({ 'transform': 'translateY(0)' });
-			}
-		});
-		await new Promise( r => setTimeout(r,750) );
-		transitioning = false;
-		setScrollLevel(0);
-	})
-	.on('click','#menu',function(){
-		$(this).toggleClass('open');
-		$('#nav-links-container').fadeToggle('fast');
+$('body')
+.on('mousewheel',async function(e){
+	if( transitioning ) return false;
+	scrollContent(e.originalEvent.deltaY,false);
+})
+.on('touchstart',async function(e){
+	tS = e.originalEvent.touches[0].clientY;
+})
+.on('touchend',async function(e){
+	tS -= e.originalEvent.changedTouches[0].clientY;
+	if( transitioning || Math.abs(tS) < ( window.innerHeight / 10 ) ) return false;
+	scrollContent(tS,true);
+})
+.on('click','#nav-links a',async function(e){
+	e.preventDefault();
+	if( transitioning ) return false;
+	$('#menu:visible').click();
+	let cs = $(this).attr('href').replace('#',''),
+		found = false;
+	
+	if( $('section.active').attr('id') == cs ) return $('section.active').find('.section-content').scrollTop(0);
+	
+	transitioning = true;
+	
+	$('section').each(function(){
+		$(this).removeClass('active')
+		if( $(this).attr('id') == cs ) found = true;
+		if( !found ) {
+			$(this).css({ 'transform': 'translateY(-100%)' });
+		}
+		else if( $(this).attr('id') == cs ) {
+			$(this).find('.section-content').scrollTop(0);
+			$(this).css({ 'transform': 'translateY(0)' }).addClass('active');
+		}
+		else if( found && $(this).attr('id') != cs ) {
+			$(this).css({ 'transform': 'translateY(0)' });
+		}
 	});
+	await new Promise( r => setTimeout(r,750) );
+	transitioning = false;
+	setScrollLevel(0);
+})
+.on('click','#menu',function(){
+	$(this).toggleClass('open');
+	$('#nav-links-container').fadeToggle('fast');
+});
 
+(function(){
     var SEPARATION = 40,
 		AMOUNTX = 130,
 		AMOUNTY = 35;
@@ -166,7 +166,9 @@ $(function(){
 		renderer.render( scene, camera );
 		count += 0.05;
 	}
+})();
 
+$(function(){
 	let container = document.getElementById("exp-skills-holder");
 	
 	container.addEventListener("mousemove",(e)=>{
@@ -189,6 +191,12 @@ $(function(){
 			elm.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
 		});
 	});
-})
+	fetch("https://type.fit/api/quotes")
+		.then( d => d.json() )
+		.then( qs => qs.filter( q => q.author ) )
+		.then( qs => qs.filter( (q,i) => i == ( (new Date()) % qs.length ) )
+			.forEach( q => document.querySelector('blockquote').innerHTML = `<i>&ldquo;${q.text}&rdquo;<br>&mdash;<br>${q.author}</i>` ) 
+		).then( () => document.querySelector('blockquote').style.opacity = 1 );
+});
 
 setScrollLevel(0);
