@@ -47,7 +47,7 @@ $('body')
 })
 .on('touchend',async function(e){
 	tS -= e.originalEvent.changedTouches[0].clientY;
-	if( transitioning || Math.abs(tS) <= 15 ) return false;
+	if( transitioning || Math.abs(tS) <= 50 ) return false;
 	scrollContent(tS);
 })
 .on('click','#nav-links a',async function(e){
