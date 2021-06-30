@@ -9,7 +9,7 @@ function setScrollLevel(dir){
 	}
 }
 
-async function scrollContent(dir){
+async function scrollContent(dir,swipe){
 	let cS = $('section.active'),
         nS = $(cS).next('section'),
         pS = $(cS).prev('section'),
@@ -26,7 +26,7 @@ async function scrollContent(dir){
 		await new Promise( r => setTimeout(r,750) );
         transitioning = false;
     }
-    if( dir < 0 && atTop && pS.length ){
+    else if( dir < 0 && atTop && pS.length ){
 		setScrollLevel(-1);
         transitioning = true;
 		$(cS).css({ 'transform': 'translateY(0%)' }).removeClass('active');
@@ -35,20 +35,23 @@ async function scrollContent(dir){
 		await new Promise( r => setTimeout(r,750) );
         transitioning = false;
     }
+	else if( dir < 0 && atTop && !pS.length && swipe ){
+		location.reload(true);
+	}
 }
 
 $('body')
 .on('mousewheel',async function(e){
 	if( transitioning ) return false;
-	scrollContent(e.originalEvent.deltaY);
+	scrollContent(e.originalEvent.deltaY,false);
 })
 .on('touchstart',async function(e){
 	tS = e.originalEvent.touches[0].clientY;
 })
 .on('touchend',async function(e){
 	tS -= e.originalEvent.changedTouches[0].clientY;
-	if( transitioning || Math.abs(tS) <= 50 ) return false;
-	scrollContent(tS);
+	if( transitioning || Math.abs(tS) < ( window.innerHeight / 10 ) ) return false;
+	scrollContent(tS,true);
 })
 .on('click','#nav-links a',async function(e){
 	e.preventDefault();
