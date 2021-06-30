@@ -345,7 +345,8 @@ div.waves{
 }
 
 blockquote{
-	width: 40%;
+	width: auto;
+    max-width: 35%;
     right: 0;
     top: 0;
     position: absolute;
