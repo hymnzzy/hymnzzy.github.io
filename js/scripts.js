@@ -36,7 +36,7 @@ async function scrollContent(dir,swipe){
         transitioning = false;
     }
 	else if( dir < 0 && atTop && !pS.length && swipe ){
-		location.reload(true);
+		location.reload();
 	}
 }
 
