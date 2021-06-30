@@ -9,7 +9,7 @@ function setScrollLevel(dir){
 }
 
 $('body')
-.on('mousewheel',async function(e){
+.on('scroll wheel DOMMouseScroll mousewheel',async function(e){
     if( transitioning ) return false;
 	let cS = $('section.active'),
         nS = $(cS).next('section'),
