@@ -1,4 +1,5 @@
-let transitioning = false;
+let transitioning = false,
+	wH = window.innerHeight;
 
 function setScrollLevel(dir){
 	let sections = $('section').length;
@@ -9,58 +10,56 @@ function setScrollLevel(dir){
 
 $('body')
 .on('mousewheel',async function(e){
-    if( transitioning ) return false
+    if( transitioning ) return false;
 	let cS = $('section.active'),
         nS = $(cS).next('section'),
-        pS = $(cS).prev('section');
+        pS = $(cS).prev('section'),
+		sC = cS.find('.section-content'),
+		atTop = sC.scrollTop() == 0,
+		atBottom = sC[0].scrollHeight - sC.scrollTop() == Math.floor( sC.outerHeight() );
 	
-	if( e.originalEvent.deltaY > 0 && nS.length && ($(window).scrollTop() + $(window).height() >= $(document).height()) ){
+	if( e.originalEvent.deltaY > 0 && atBottom && nS.length ){
         setScrollLevel(1);
         transitioning = true;
-		$('body').css({ 'overflow-y':'hidden' });
-		await new Promise( r => setTimeout(r,100) );
-        $(cS).css({ 'transform': 'translateY(-100%)' });
+		$(cS).css({ 'transform': 'translateY(-100%)' }).removeClass('active');
+		await new Promise( r => setTimeout(r,250) );
+		$(nS).css({ 'transform': 'translateY(0%)' }).addClass('active');
 		await new Promise( r => setTimeout(r,750) );
-		$(cS).removeClass('active');
-		$(nS).addClass('active');
-		$('body').css({ 'overflow-y':'' })
         transitioning = false;
     }
-    if( e.originalEvent.deltaY < 0 && pS.length && $(window).scrollTop() <= 0 ){
+    if( e.originalEvent.deltaY < 0 && atTop && pS.length ){
 		setScrollLevel(-1);
         transitioning = true;
-		$('body').css({ 'overflow-y':'hidden' })
-        $(cS).removeClass('active');
-		$(pS).addClass('active');
-		await new Promise( r => setTimeout(r,100) );
-        $(pS).css({ 'transform':'translateY(0)' });
+		$(cS).css({ 'transform': 'translateY(0%)' }).removeClass('active');
+		await new Promise( r => setTimeout(r,250) );
+		$(pS).css({ 'transform': 'translateY(0%)' }).addClass('active');
 		await new Promise( r => setTimeout(r,750) );
-		$('body').css({ 'overflow-y':'' })
         transitioning = false;
     }
 })
 .on('click','#nav-links a',async function(e){
 	e.preventDefault();
+	if( transitioning ) return false;
 	$('#menu:visible').click();
 	let cs = $(this).attr('href').replace('#',''),
-		found = false,
-		others = new Array();
+		found = false;
+	
+	if( $('section.active').attr('id') == cs ) return $('section.active').find('.section-content').scrollTop(0);
 	
 	transitioning = true;
-		
+	
 	$('section').each(function(){
 		$(this).removeClass('active')
 		if( $(this).attr('id') == cs ) found = true;
 		if( !found ) {
 			$(this).css({ 'transform': 'translateY(-100%)' });
-			others.push(this)
 		}
 		else if( $(this).attr('id') == cs ) {
-			$(this).css({ 'transform': 'translateY(0)' }).addClass('active')
+			$(this).find('.section-content').scrollTop(0);
+			$(this).css({ 'transform': 'translateY(0)' }).addClass('active');
 		}
 		else if( found && $(this).attr('id') != cs ) {
 			$(this).css({ 'transform': 'translateY(0)' });
-			others.push(this)
 		}
 	});
 	await new Promise( r => setTimeout(r,750) );

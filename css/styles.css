@@ -1,22 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;600;700;800;900&display=swap');
 
-body::-webkit-scrollbar {
+::-webkit-scrollbar {
 	width: 7.5px;
 	border-radius: 5px;
 }
-body::-webkit-scrollbar-track {
+::-webkit-scrollbar-track {
     background: transparent;
     border-radius: 10px;
 }
-body::-webkit-scrollbar-thumb {
-	background: rgba(128,128,128,0.5); 
+::-webkit-scrollbar-thumb {
+	background: rgba(0,0,0,0.75);
     border-radius: 10px;
 }
-body::-webkit-scrollbar-thumb:hover {
-	background: rgba(0,0,0,0.5);
-}
-.dark section::-webkit-scrollbar-thumb:hover {
-	background: rgba(255,255,255,0.5);
+.dark section::-webkit-scrollbar-thumb {
+	background: rgba(255,255,255,0.75);
 }
 
 span.invert{
@@ -28,7 +25,8 @@ span.invert{
 	align-items: center;
 }
 html{
-	background: #fbefdf
+	background: #fbefdf;
+	scroll-behavior: smooth;
 }
 html.dark{
     background-color: black;
@@ -46,8 +44,7 @@ body{
 	margin: 0;
 	padding: 0;
 	box-sizing: border-box;
-	overflow-x: hidden;
-	font-smooth: never;
+	overflow: hidden;;
 }
 
 .container {
@@ -59,7 +56,7 @@ body{
 nav#nav-header {
     height: 8vh;
     position: fixed;
-    width: 100vw;
+    width: calc(100vw - 7.5px);
     z-index: 15;
 	display: flex;
 	align-items: center;
@@ -184,14 +181,13 @@ nav#nav-header a{
         width: 85%;
     }
 }
-
 @media only screen and (min-width: 993px) {
     .container {
         width: 70%;
     }
 }
 
-.content-for-intro{
+.content-for-intro {
 	position:absolute;
 	width: 100%;
 	left: 0;
@@ -217,7 +213,6 @@ nav#nav-header a{
 #exp-years-holder {
 	text-align: center;
 }
-
 .expertise-bar{
 	background: rgba(136, 136, 136, 0.533);
 	height: 5px;
@@ -234,11 +229,9 @@ nav#nav-header a{
 .dark .expertise-bar[data-expertise]:after {
     background: white;
 }
-
 #exp-skills-holder{
 	perspective: 150px;
 }
-
 #skills{
 	display: flex;
     flex-wrap: wrap;
@@ -253,7 +246,6 @@ nav#nav-header a{
 .dark #skills .skill{
 	background: #fafafa
 }
-
 @media only screen and (max-width: 601px){
 	.content-for-about {
 	    grid-template-columns: 1fr;
@@ -262,27 +254,28 @@ nav#nav-header a{
 
 section{
 	position: absolute;
-	contain: content;
-    height: 100vh;
-	width: 100vw;
-	min-height: 100vh;
 	background: none;
-	transition: transform ease-in-out .75s,
-				opacity ease-in-out .75s;
-	overflow-y: hidden;
 	display: flex;
-	opacity: 0
+	opacity: 0;
+	-webkit-transition: all ease-in-out 0.75s;
+	-moz-transition: all ease-in-out 0.75s;
+	-o-transition: all ease-in-out 0.75s;
+	transition: all ease-in-out 0.75s;
 }
 section.active{
-	overflow-y: auto;
-	height: auto;
 	opacity: 1;
 }
-section > *:last-of-type {
-    margin-bottom: 4vh;
+section > .section-content {	
+	width: 100vw;
+	height: 100vh;
+    overflow-y: scroll;
+	scroll-behavior: smooth;
 }
-section > *:first-of-type {
-    margin-top: 8vh;
+section > .section-content > .container {
+    margin-bottom: 4.5vh;
+    margin-top: 8.5vh;
+    min-height: 87vh;
+    height: fit-content;
 }
 
 div.waves{
@@ -296,11 +289,15 @@ div.waves{
 }
 .page-footer{
     position: fixed;
-    width: 100vw;
+    width: calc(100vw - 7.5px);
     bottom: 0;
     height: 4vh;
     line-height: 4vh;
 	z-index: 10;
+	background: #fbefdf;
+}
+.dark .page-footer{
+	background: black;
 }
 #scroll-level-holder{
 	position: fixed;
@@ -350,7 +347,7 @@ div.waves{
 .text-xlarge{ font-size: 3.75vh !important; }
 .text-large{ font-size: 2.625vh !important; }
 .text-medium{ font-size: 2.175vh !important; }
-.text-small{ font-size: minmax(12px,1.725vh) !important; }
+.text-small{ font-size: max(12px,1.725vh) !important; }
 
 .pos-rel{
     position: relative !important;

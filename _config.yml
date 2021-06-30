@@ -2,41 +2,44 @@
 ---
 title: Himanshu C Reddy | Marketer & Digital Strategist
 description: Meticulous and a creative marketer with 7+ years of experience in digital marketing & strategy in fast-paced start-ups as well as process-oriented enterprises. I ensure businesses goals meet customers expectation and help both thrive in the digital ecosystem.
-about:
-  years: 7
-  expertise:
-  - name: Digital Marketing
-    level: 95%
-  - name: Branding
-    level: 90%
-  - name: Digital Transformation
-    level: 85%
-  - name: Program Management
-    level: 80%
-  - name: Product Management
-    level: 75%
-  - name: Offline Marketing
-    level: 60%
-  skills:
-  - SEO
-  - SEM
-  - SMM
-  - Retargeting
-  - Lead Management
-  - E-Commerce
-  - Marketing Research
-  - Process Automation
-  - Agency Management
-  - AIDA Funnel
-  - Strategic Planning
-  - SWOT Analysis
-  - Data Modelling
-  - Data Modelling
-  - Data Modelling
-  - HTML / CSS3 / JS
-  - Photoshop
-  - Powershell
-  - Modular Programming
+index:
+  - intro:
+    name: Himanshu
+  - about:
+    years: 7
+    expertise:
+    - name: Digital Marketing
+      level: 95%
+    - name: Branding
+      level: 90%
+    - name: Digital Transformation
+      level: 85%
+    - name: Program Management
+      level: 80%
+    - name: Product Management
+      level: 75%
+    - name: Offline Marketing
+      level: 60%
+    skills:
+    - SEO
+    - SEM
+    - SMM
+    - Retargeting
+    - Lead Management
+    - E-Commerce
+    - Marketing Research
+    - Process Automation
+    - Agency Management
+    - AIDA Funnel
+    - Strategic Planning
+    - SWOT Analysis
+    - Data Modelling
+    - Data Modelling
+    - Data Modelling
+    - HTML / CSS3 / JS
+    - Photoshop
+    - Powershell
+    - Modular Programming
 
 
 #Social Media Profile
