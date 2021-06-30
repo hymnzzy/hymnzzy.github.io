@@ -343,19 +343,20 @@ div.waves{
 }
 
 blockquote{
-	width: auto;
-    max-width: 35%;
-    right: 0;
     top: 0;
-    position: absolute;
-    text-align: right;
+    right: 0;
+    opacity: 0;
+	width: auto;
+    padding: 1em;
+    max-width: 35%;
+    margin: 4em 0 0;
     border: 1px solid;
-    padding: .5em;
-	opacity: 0;
-	-webkit-transition: all ease-in-out 0.75s;
-	-moz-transition: all ease-in-out 0.75s;
-	-o-transition: all ease-in-out 0.75s;
-	transition: all ease-in-out 0.75s;
+    text-align: right;
+    position: absolute;
+    -webkit-transition: all ease-in-out 0.75s;
+    -moz-transition: all ease-in-out 0.75s;
+    -o-transition: all ease-in-out 0.75s;
+    transition: all ease-in-out 0.75s;
 }
 
 .text-xxlarge{ font-size: 6vh !important; }
