@@ -344,6 +344,21 @@ div.waves{
     font-weight: bold !important;
 }
 
+blockquote{
+	width: 40%;
+    right: 0;
+    top: 0;
+    position: absolute;
+    text-align: right;
+    border: 1px solid;
+    padding: .5em;
+	opacity: 0;
+	-webkit-transition: all ease-in-out 0.75s;
+	-moz-transition: all ease-in-out 0.75s;
+	-o-transition: all ease-in-out 0.75s;
+	transition: all ease-in-out 0.75s;
+}
+
 .text-xxlarge{ font-size: 6vh !important; }
 .text-xlarge{ font-size: 3.75vh !important; }
 .text-large{ font-size: 2.625vh !important; }
