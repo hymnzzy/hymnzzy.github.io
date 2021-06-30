@@ -276,6 +276,7 @@ section > .section-content > .container {
     margin-top: 8.5vh;
     min-height: 87vh;
     height: fit-content;
+	display: grid;
 }
 
 div.waves{
