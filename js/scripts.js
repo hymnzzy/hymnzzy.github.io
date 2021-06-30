@@ -1,4 +1,5 @@
 let transitioning = false,
+	tS = 0,
 	wH = window.innerHeight;
 
 function setScrollLevel(dir){
@@ -8,9 +9,7 @@ function setScrollLevel(dir){
 	}
 }
 
-$('body')
-.on('mousewheel touchmove',async function(e){
-    if( transitioning ) return false;
+async function scrollContent(dir){
 	let cS = $('section.active'),
         nS = $(cS).next('section'),
         pS = $(cS).prev('section'),
@@ -18,7 +17,7 @@ $('body')
 		atTop = sC.scrollTop() == 0,
 		atBottom = sC[0].scrollHeight - sC.scrollTop() == Math.floor( sC.outerHeight() );
 	
-	if( e.originalEvent.deltaY > 0 && atBottom && nS.length ){
+	if( dir > 0 && atBottom && nS.length ){
         setScrollLevel(1);
         transitioning = true;
 		$(cS).css({ 'transform': 'translateY(-100%)' }).removeClass('active');
@@ -27,7 +26,7 @@ $('body')
 		await new Promise( r => setTimeout(r,750) );
         transitioning = false;
     }
-    if( e.originalEvent.deltaY < 0 && atTop && pS.length ){
+    if( dir < 0 && atTop && pS.length ){
 		setScrollLevel(-1);
         transitioning = true;
 		$(cS).css({ 'transform': 'translateY(0%)' }).removeClass('active');
@@ -36,6 +35,20 @@ $('body')
 		await new Promise( r => setTimeout(r,750) );
         transitioning = false;
     }
+}
+
+$('body')
+.on('mousewheel',async function(e){
+	if( transitioning ) return false;
+	scrollContent(e.originalEvent.deltaY);
+})
+.on('touchstart',async function(e){
+	tS = e.originalEvent.touches[0].clientY;
+})
+.on('touchend',async function(e){
+	tS -= e.originalEvent.changedTouches[0].clientY;
+	if( transitioning || Math.abs(tS) <= 15 ) return false;
+	scrollContent(tS);
 })
 .on('click','#nav-links a',async function(e){
 	e.preventDefault();
