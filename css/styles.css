@@ -82,7 +82,7 @@ nav#nav-header a{
 		flex-flow: column;
 		position: absolute;
 		left: -5.5%;
-		top: -4vh;
+		top: -2.5vh;
 		background: #fbefdf;
 		z-index: 100;
 		height: 100vh;
@@ -251,6 +251,7 @@ nav#nav-header a{
 }
 
 section{
+	transform: translateY(10%);
 	position: absolute;
 	background: none;
 	display: flex;

@@ -1,196 +1,248 @@
-$(document).ready(function(){
-	let transitioning = false,
-		tS = 0,
-		wH = window.innerHeight;
+let transitioning = false,
+	tS = 0,
+	wH = window.innerHeight,
+	skillsContainer = document.getElementById("exp-skills-holder");
+
+async function delay(t){
+	return new Promise( r => setTimeout(r,t) );
+}
+
+function fadeToggle(elm,speed){
+	let style = window.getComputedStyle(elm),
+		isHidden = (style.display == "none" || style.opacity == "0");
+	fade(elm,isHidden?0:1,isHidden?1:0,speed)
+}
+
+function fade(elm,from,to,speed){
+	let opacity = from,
+		delta = ( from > to ? -1 : 1 ) * 10 / speed,
+		anim = setInterval(function(){
+			opacity += delta;
+			elm.style.opacity = opacity;
+			if( from < to ){
+				elm.style.visibility = "visible";
+				elm.style.display = "block";
+			}		
+			if( ( from > to && opacity <= to ) || ( from < to && opacity >= to ) ){
+				clearInterval(anim);
+				if( from > to ){
+                    elm.style.visibility = "hidden";
+                    elm.style.display = "none";
+                }
+			}
+		},1);
+}
+
+function setScrollLevel(){
+	let sections = document.querySelectorAll('section'),
+		scrollLevel = document.getElementById('scroll-level');
 	
-	function setScrollLevel(){
-		let sections = $('section').length;
-		for( let i = 0; i<sections; i++){
-			if( $('section')[i].classList.contains('active') ) $('#scroll-level').css({ 'height': `${ 100 / sections }%`,'top': `(${ i * 100 / sections }%` })
+	sections.forEach( (s,i) => {
+		if( s.classList.contains('active') ){
+			scrollLevel.style.height = `${ 100 / sections.length }%`;
+			scrollLevel.style.top = `${ i * 100 / sections.length }%`;
 		}
-	}
+	});
+}
+
+async function scrollContent(dir,swipe){
+	let cS = document.querySelector("section.active"),
+		nS = cS.nextElementSibling,
+		pS = cS.previousElementSibling,
+		sC = cS.querySelector(".section-content"),
+		atTop = sC.scrollTop <= ( wH / 20 ),
+		atBottom = sC.scrollHeight - sC.scrollTop - sC.clientHeight <= ( wH / 20 );
 	
-	async function scrollContent(dir,swipe){
-		let cS = $('section.active'),
-			nS = $(cS).next('section'),
-			pS = $(cS).prev('section'),
-			sC = cS.find('.section-content'),
-			atTop = sC.scrollTop() <= ( wH / 20 ),
-			atBottom = sC[0].scrollHeight - sC.scrollTop() - sC.outerHeight() <= ( wH / 20 );
-		
-		if( dir > 0 && atBottom && nS.length ){
-			transitioning = true;
-			$(cS).css({ 'transform': 'translateY(-100%)' }).removeClass('active');
-			await new Promise( r => setTimeout(r,250) );
-			$(nS).css({ 'transform': 'translateY(0%)' }).addClass('active');
-			await new Promise( r => setTimeout(r,750) );
-			transitioning = false;
-		}
-		else if( dir < 0 && atTop && pS.length ){
-			transitioning = true;
-			$(cS).css({ 'transform': 'translateY(0%)' })
-			await new Promise( r => setTimeout(r,150) );
-			$(cS).removeClass('active');
-			$(pS).css({ 'transform': 'translateY(0%)' }).addClass('active');
-			await new Promise( r => setTimeout(r,750) );
-			transitioning = false;
-		}
-		else if( dir < 0 && atTop && !pS.length && swipe ){
-			location.reload();
-		}
-		setScrollLevel();
-	}
-	
-	$('body')
-	.on('mousewheel',async function(e){
-		if( transitioning ) return false;
-		scrollContent(e.originalEvent.deltaY,false);
-	})
-	.on('touchstart',async function(e){
-		tS = e.originalEvent.touches[0].clientY;
-	})
-	.on('touchend',async function(e){
-		tS -= e.originalEvent.changedTouches[0].clientY;
-		if( transitioning || Math.abs(tS) < ( window.innerHeight / 10 ) ) return false;
-		scrollContent(tS,true);
-	})
-	.on('click','#nav-links a',async function(e){
-		e.preventDefault();
-		if( transitioning ) return false;
-		$('#menu:visible').click();
-		let cs = $(this).attr('href').replace('#',''),
-			found = false;
-		
-		if( $('section.active').attr('id') == cs ) return $('section.active').find('.section-content').scrollTop(0);
-		
+	if( dir > 0 && atBottom && nS && nS.nodeName == "SECTION" ){
 		transitioning = true;
-		
-		$('section').each(function(){
-			$(this).removeClass('active')
-			if( $(this).attr('id') == cs ) found = true;
-			if( !found ) {
-				$(this).css({ 'transform': 'translateY(-100%)' });
-			}
-			else if( $(this).attr('id') == cs ) {
-				$(this).find('.section-content').scrollTop(0);
-				$(this).css({ 'transform': 'translateY(0)' }).addClass('active');
-			}
-			else if( found && $(this).attr('id') != cs ) {
-				$(this).css({ 'transform': 'translateY(0)' });
-			}
-		});
+		cS.style.transform = "translateY(-100%)";
+		cS.classList.remove("active");
+		await delay(250);
+		nS.style.transform = "translateY(0%)";
+		nS.classList.add("active");
+		await delay(750);
+		transitioning = false;
+	}
+	else if( dir < 0 && atTop && pS && pS.nodeName == "SECTION" ){
+		transitioning = true;
+		cS.style.transform = "translateY(10%)";
+		await delay(150);
+		pS.style.transform = "translateY(0%)";
+		cS.classList.remove("active");
+		pS.classList.add("active");
 		await new Promise( r => setTimeout(r,750) );
 		transitioning = false;
-		setScrollLevel(0);
-	})
-	.on('click','#menu',function(){
-		$(this).toggleClass('open');
-		$('#nav-links-container').fadeToggle('fast');
-	});
-	
-	(function(){
-		var SEPARATION = 40,
-			AMOUNTX = 130,
-			AMOUNTY = 35;
-	
-		var container;
-		var camera, scene, renderer;
-		
-		var particles, particle, count = 0;
-	
-		init();
-		animate();
-	
-		function init() {
-	
-			container = document.createElement( 'div' );
-			document.body.appendChild( container );
-			if(container) {
-				container.className += container.className ? ' waves' : 'waves';
-			}
-	
-			camera = new THREE.PerspectiveCamera( 120, window.innerWidth / window.innerHeight, 1, 10000 );
-			camera.position.y = 150; //changes how far back you can see i.e the particles towards horizon
-			camera.position.z = 300; //This is how close or far the particles are seen
-			
-			camera.rotation.x = 0.35;
-			
-			scene = new THREE.Scene();
-	
-			particles = new Array();
-	
-			var PI2 = Math.PI * 2;
-			var material = new THREE.SpriteCanvasMaterial( {
-				color: $('html').hasClass('dark')?0xffffff:0x000000,
-				program: function ( context ) {
-					context.beginPath();
-					context.arc( 0, 0, 0.1, 0, PI2, true );
-					context.fill();
-				}
-			} );
-	
-			var i = 0;
-			for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
-				for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
-					particle = particles[ i ++ ] = new THREE.Sprite( material );
-					particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
-					particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) - 10 );
-					scene.add( particle );
-				}
-			}
-			renderer = new THREE.CanvasRenderer();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-			renderer.setClearColor( $('html').hasClass('dark')?0x000000:0xfbefdf, 1);
-			container.appendChild( renderer.domElement );
-			window.addEventListener( 'resize', onWindowResize, false );
-		}
-		function onWindowResize() {
-			windowHalfX = window.innerWidth / 2;
-			windowHalfY = window.innerHeight / 2;
-			camera.aspect = window.innerWidth / window.innerHeight;
-			camera.updateProjectionMatrix();
-			renderer.setSize( window.innerWidth, window.innerHeight );
-		}
-		function animate() {
-			requestAnimationFrame( animate );
-			render();
-		}
-		function render() {
-			var i = 0;
-			for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
-				for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
-					particle = particles[ i++ ];
-					particle.position.y = ( Math.sin( ( ix + count ) * 0.5 ) * 20 ) + ( Math.sin( ( iy + count ) * 0.5 ) * 20 );
-					particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 2 ) * 4 + ( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 4;
-				}
-			}
-			renderer.render( scene, camera );
-			count += 0.05;
-		}
-	})();
-	
-	(function(){
-		let container = document.getElementById("exp-skills-holder");
-		container.addEventListener("mousemove",(e)=>{
-			let rect = container.getBoundingClientRect();
-			let xAxis = ( ( e.clientX - rect.x ) - rect.width/2 ) / 120;
-			let yAxis = ( ( e.clientY - rect.y ) - rect.height/2 ) / 60;
-			
-			document.querySelectorAll("#exp-skills-holder .skill").forEach((elm)=>{
-				elm.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateZ(${(32-elm.innerText.length)/2}px)`
-			});
-		});
-		container.addEventListener("mouseenter",async (e)=>{
-			document.querySelectorAll("#exp-skills-holder .skill").forEach((elm)=>{
-				elm.style.transition = `none`;
-			});
-		});
-		container.addEventListener("mouseleave",(e)=>{
-			document.querySelectorAll("#exp-skills-holder .skill").forEach((elm)=>{
-				elm.style.transition = `all 0.5s ease`;
-				elm.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
-			});
-		});
-	});
+	}
+	else if( dir < 0 && atTop && !pS.length && swipe ){
+		location.reload();
+	}
 	setScrollLevel();
-})
+}
+
+document.body.addEventListener("mousewheel",async function(e){
+    if( transitioning ) return false;
+	scrollContent(e.deltaY,false);
+});
+document.body.addEventListener("touchstart",async function(e){
+	if( transitioning ) return false;
+	tS = e.touches[0].clientY;
+});
+document.body.addEventListener("touchend",async function(e){
+	tS -= e.changedTouches[0].clientY;
+	if( transitioning || Math.abs(tS) < ( window.innerHeight / 10 ) ) return false;
+	scrollContent(tS,true);
+});
+document.getElementById("menu").addEventListener("click",function(){
+	this.classList.toggle('open');
+	fadeToggle(document.getElementById('nav-links-container'),1000)
+});
+
+document.querySelectorAll("#nav-links a").forEach( (nav) => {
+	nav.addEventListener("click",async function(e){
+		e.preventDefault();
+		if( transitioning ) return false;
+		
+		document.querySelector("#menu.open") && document.querySelector("#menu.open").click();
+
+		let cS = nav.getAttribute('href').replace("#","");
+		if( document.querySelector("section.active").id == cS ) return document.querySelector("section.active").querySelector(".section-content").scrollTo(0,0);
+
+		transitioning = true;
+		let found = false;
+
+		document.querySelectorAll('section').forEach( (section) => {
+			section.classList.remove('active');
+			if( section.id == cS ) found = true;
+			
+			if( !found ){
+				section.style.transform = "translateY(-100%)"
+			} else if( section.id == cS ) {
+				section.querySelector(".section-content").scrollTo(0,0);
+				section.style.transform = "translateY(0%)"
+				section.classList.add('active');
+			} else if( found && $(this).attr('id') != cS ) {
+				section.style.transform = "translateY(10%)"
+			}
+		});
+		await delay(750);
+		transitioning = false;
+		setScrollLevel();
+	});
+});
+
+skillsContainer.addEventListener("mousemove",(e) => {
+	let rect = skillsContainer.getBoundingClientRect();
+	let xAxis = ( ( e.clientX - rect.x ) - rect.width/2 ) / 120;
+	let yAxis = ( ( e.clientY - rect.y ) - rect.height/2 ) / 60;
+	
+	skillsContainer.querySelectorAll(".skill").forEach((elm) => {
+		elm.style.transform = `rotateY(${xAxis}deg) rotateX(${yAxis}deg) translateZ(${(32-elm.innerText.length)/2}px)`
+	});
+});
+skillsContainer.addEventListener("mouseenter",()=>{
+	skillsContainer.querySelectorAll(".skill").forEach((elm) => {
+		elm.style.transition = `none`;
+	});
+});
+skillsContainer.addEventListener("mouseleave",()=>{
+	skillsContainer.querySelectorAll(".skill").forEach((elm) => {
+		elm.style.transition = `all 0.5s ease`;
+		elm.style.transform = `rotateY(0deg) rotateX(0deg) translateZ(0px)`
+	});
+});
+
+/* Core functions end */
+/* Particle function starts */
+
+function genParticles() {
+	let SEPARATION = 40,
+		AMOUNTX = 130,
+		AMOUNTY = 35,
+		particleContainer,
+		camera,
+		scene,
+		renderer,
+		particles,
+		particle,
+		count = 0;
+		
+	function init() {
+		particleContainer = document.createElement( 'div' );
+		document.body.appendChild( particleContainer );
+		if(particleContainer) particleContainer.className += particleContainer.className ? ' waves' : 'waves';
+
+		camera = new THREE.PerspectiveCamera( 120, window.innerWidth / window.innerHeight, 1, 10000 );
+		camera.position.y = 150; //changes how far back you can see i.e the particles towards horizon
+		camera.position.z = 300; //This is how close or far the particles are seen
+		
+		camera.rotation.x = 0.35;
+		
+		scene = new THREE.Scene();
+
+		particles = new Array();
+
+		var PI2 = Math.PI * 2;
+		var material = new THREE.SpriteCanvasMaterial( {
+			color: document.querySelector("html").classList.contains("dark")?0xffffff:0x000000,
+			program: function ( context ) {
+				context.beginPath();
+				context.arc( 0, 0, 0.1, 0, PI2, true );
+				context.fill();
+			}
+		} );
+
+		var i = 0;
+		for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+			for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+				particle = particles[ i ++ ] = new THREE.Sprite( material );
+				particle.position.x = ix * SEPARATION - ( ( AMOUNTX * SEPARATION ) / 2 );
+				particle.position.z = iy * SEPARATION - ( ( AMOUNTY * SEPARATION ) - 10 );
+				scene.add( particle );
+			}
+		}
+		renderer = new THREE.CanvasRenderer();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+		renderer.setClearColor( document.querySelector("html").classList.contains("dark")?0x000000:0xfbefdf, 1);
+		particleContainer.appendChild( renderer.domElement );
+		window.addEventListener( 'resize', onWindowResize, false );
+	}
+	function onWindowResize() {
+		windowHalfX = window.innerWidth / 2;
+		windowHalfY = window.innerHeight / 2;
+		camera.aspect = window.innerWidth / window.innerHeight;
+		camera.updateProjectionMatrix();
+		renderer.setSize( window.innerWidth, window.innerHeight );
+	}
+	function animate() {
+		requestAnimationFrame( animate );
+		render();
+	}
+	function render() {
+		var i = 0;
+		for ( var ix = 0; ix < AMOUNTX; ix ++ ) {
+			for ( var iy = 0; iy < AMOUNTY; iy ++ ) {
+				particle = particles[ i++ ];
+				particle.position.y = ( Math.sin( ( ix + count ) * 0.5 ) * 20 ) + ( Math.sin( ( iy + count ) * 0.5 ) * 20 );
+				particle.scale.x = particle.scale.y = ( Math.sin( ( ix + count ) * 0.3 ) + 2 ) * 4 + ( Math.sin( ( iy + count ) * 0.5 ) + 1 ) * 4;
+			}
+		}
+		renderer.render( scene, camera );
+		count += 0.05;
+	}
+	init();
+	animate();
+}
+/* Particle function ends */
+
+function initFuctions(){
+	setScrollLevel();
+	genParticles();
+	fetch("https://type.fit/api/quotes")
+		.then( d => d.json() )
+		.then( qs => qs.filter( q => q.author ) )
+		.then( qs => qs.filter( (q,i) => i == ( (new Date()) % qs.length ) )
+			.forEach( q => document.querySelector('blockquote').innerHTML = `<i>&ldquo;${q.text}&rdquo;<br>&mdash;<br>${q.author}</i>` ) 
+		).then(() => {
+			document.querySelector('blockquote').style.opacity = 1
+		});
+};
