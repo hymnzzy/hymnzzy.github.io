@@ -309,8 +309,9 @@ div.waves{
     transform: translateY(-50%);
 }
 #scroll-level{
-	transition: all ease-in-out .75s;
+	transition: all ease-in-out .3s;
 	background: black;
+    position: relative;
 }
 .dark #scroll-level{
 	background: white;

@@ -3,10 +3,10 @@ $(document).ready(function(){
 		tS = 0,
 		wH = window.innerHeight;
 	
-	function setScrollLevel(dir){
+	function setScrollLevel(){
 		let sections = $('section').length;
 		for( let i = 0; i<sections; i++){
-			if( $('section')[i].classList.contains('active') ) $('#scroll-level').css({ 'height': `${(i+1+dir)*100/sections}%` })
+			if( $('section')[i].classList.contains('active') ) $('#scroll-level').css({ 'height': `${ 100 / sections }%`,'top': `(${ i * 100 / sections }%` })
 		}
 	}
 	
@@ -19,7 +19,6 @@ $(document).ready(function(){
 			atBottom = sC[0].scrollHeight - sC.scrollTop() - sC.outerHeight() <= ( wH / 20 );
 		
 		if( dir > 0 && atBottom && nS.length ){
-			setScrollLevel(1);
 			transitioning = true;
 			$(cS).css({ 'transform': 'translateY(-100%)' }).removeClass('active');
 			await new Promise( r => setTimeout(r,250) );
@@ -28,7 +27,6 @@ $(document).ready(function(){
 			transitioning = false;
 		}
 		else if( dir < 0 && atTop && pS.length ){
-			setScrollLevel(-1);
 			transitioning = true;
 			$(cS).css({ 'transform': 'translateY(0%)' })
 			await new Promise( r => setTimeout(r,150) );
@@ -40,6 +38,7 @@ $(document).ready(function(){
 		else if( dir < 0 && atTop && !pS.length && swipe ){
 			location.reload();
 		}
+		setScrollLevel();
 	}
 	
 	$('body')
@@ -193,6 +192,5 @@ $(document).ready(function(){
 			});
 		});
 	});
-	
-	setScrollLevel(0);
+	setScrollLevel();
 })
