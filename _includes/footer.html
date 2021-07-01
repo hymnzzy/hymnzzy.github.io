@@ -3,10 +3,12 @@
     window.addEventListener("load",function(){
         document.querySelector("section#intro-content").style.transform = 'translateY(0%)'
         document.querySelector("section#intro-content").classList.add('active');
-        let script = document.createElement("script");
-        script.src = "{{ site.cdn }}/combine/{{ site.git }}/js/scripts.min.js,{{ site.git }}/js/three.min.js";
-        script.onload = initFuctions;
-        script.crossorigin = "anonymous";
-        setTimeout(function() { document.head.appendChild(script); }, 1500);
+        setTimeout(function(){
+            let script = document.createElement("script");
+            script.src = "{{ site.cdn }}/combine/{{ site.git }}/js/scripts.min.js,{{ site.git }}/js/three.min.js";
+            script.onload = initFuctions;
+            script.crossorigin = "anonymous";
+            document.head.appendChild(script);
+        }, 1500)
     });
 </script>
