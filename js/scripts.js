@@ -234,7 +234,7 @@ function genParticles() {
 }
 /* Particle function ends */
 
-function initFuctions(){
+function initFunctions(){
 	setScrollLevel();
 	genParticles();
 	fetch("https://type.fit/api/quotes")
