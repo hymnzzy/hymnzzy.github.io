@@ -5,7 +5,7 @@
         document.querySelector("section#intro-content").classList.add('active');
         let script = document.createElement("script");
         script.src = "https://cdn.jsdelivr.net/gh/hymnzzy/hymnzzy.github.io/js/three.js";
-        script.onload = initFuctions;
+        script.onload = function(){ initFuctions() };
         script.crossorigin = "anonymous";
         setTimeout(function(){ document.head.appendChild(script) },1500);
     });
