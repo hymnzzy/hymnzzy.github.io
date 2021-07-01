@@ -1,6 +1,9 @@
 <footer class="page-footer pt-0 pb-0 transparent"><div class="container has-text text-small">© {{ site.time | date: '%Y' }} Copyright Text</div></footer>
-<script>document.querySelector("section#intro-content").classList.add('active');</script>
-<script
-    type="text/javascript"
-    src="{{ site.cdn }}/combine/{{ site.git }}/js/jquery.min.js,{{ site.git }}/js/three.min.js,{{ site.git }}/js/scripts.min.js"
-></script>
+<script>
+    window.addEventListener("load",function(){
+        document.querySelector("section#intro-content").classList.add('active');
+        let script = document.createElement("script");
+        script.src = "{{ site.cdn }}/combine/{{ site.git }}/js/jquery.min.js,{{ site.git }}/js/three.min.js,{{ site.git }}/js/scripts.min.js";
+        document.head.appendChild(script);
+    });
+</script>
