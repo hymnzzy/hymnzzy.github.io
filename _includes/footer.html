@@ -4,8 +4,8 @@
         document.querySelector("section#intro-content").style.transform = 'translateY(0%)'
         document.querySelector("section#intro-content").classList.add('active');
         setTimeout(function(){
-            let initFunction = null,
-                script = document.createElement("script");
+            window.initFuctions = null;
+            let script = document.createElement("script");
             script.src = "{{ site.cdn }}/combine/{{ site.git }}/js/scripts.min.js,{{ site.git }}/js/three.min.js";
             script.onload = initFuctions;
             script.crossorigin = "anonymous";
