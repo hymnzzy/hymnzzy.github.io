@@ -1,17 +1,6 @@
 <footer class="page-footer pt-0 pb-0 transparent"><div class="container has-text text-small">© {{ site.time | date: '%Y' }} Copyright Text</div></footer>
-<script>
-    window.addEventListener("load",function(){
-        fetch("https://type.fit/api/quotes")
-            .then( d => d.json() )
-            .then( qs => qs.filter( q => q.author ) )
-            .then( qs => qs.filter( (q,i) => i == ( (new Date()) % qs.length ) )
-                .forEach( q => document.querySelector('blockquote').innerHTML = `<i>&ldquo;${q.text}&rdquo;<br>&mdash;<br>${q.author}</i>` ) 
-            ).then( () => {
-                document.querySelector('blockquote').style.opacity = 1
-            });
-        document.querySelector("section#intro-content").classList.add('active');
-        let script = document.createElement("script");
-        script.src = "https://cdn.jsdelivr.net/combine/gh/hymnzzy/hymnzzy.github.io@alpha-1/js/jquery.min.js,gh/hymnzzy/hymnzzy.github.io@alpha-1/js/three.min.js,gh/hymnzzy/hymnzzy.github.io@alpha-1/js/scripts.min.js";
-        document.head.appendChild(script);
-    });
-</script>
+<script>document.querySelector("section#intro-content").classList.add('active');</script>
+<script
+    type="text/javascript"
+    src="{{ site.cdn }}/combine/{{ site.git }}/js/jquery.min.js,{{ site.git }}/js/scripts.min.js,{{ site.git }}/js/three.min.js"
+></script>
