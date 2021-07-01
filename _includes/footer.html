@@ -8,8 +8,8 @@
                 .forEach( q => document.querySelector('blockquote').innerHTML = `<i>&ldquo;${q.text}&rdquo;<br>&mdash;<br>${q.author}</i>` ) 
             ).then( () => {
                 document.querySelector('blockquote').style.opacity = 1
-                document.querySelector("section#intro-content").classList.add('active');
             });
+        document.querySelector("section#intro-content").classList.add('active');
         let script = document.createElement("script");
         script.src = "https://cdn.jsdelivr.net/combine/gh/hymnzzy/hymnzzy.github.io@alpha-1/js/jquery.min.js,gh/hymnzzy/hymnzzy.github.io@alpha-1/js/three.min.js,gh/hymnzzy/hymnzzy.github.io@alpha-1/js/scripts.min.js";
         document.head.appendChild(script);
