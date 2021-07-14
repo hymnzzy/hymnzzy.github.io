@@ -9,7 +9,7 @@
     grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 25px;
     height: 100%;
-    > div {
+    >div {
         min-height: 50vh;
         align-self: center;
         border: 1px solid black;
@@ -25,8 +25,8 @@
 	background: rgba(136, 136, 136, 0.533);
 	height: 5px;
 	position: relative;
-    & [data-expertise]{
-        & :after {
+    &[data-expertise]{
+        &:after {
             content: '';
             background: black;
             height: 5px;
