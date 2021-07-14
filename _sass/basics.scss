@@ -43,7 +43,7 @@ section{
 	-moz-transition: all ease-in-out 0.75s;
 	-o-transition: all ease-in-out 0.75s;
 	transition: all ease-in-out 0.75s;
-    & .active{
+    + .active{
 	    opacity: 1;
     }
     > .section-content {	
