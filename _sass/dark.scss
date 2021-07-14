@@ -39,4 +39,9 @@
     .has-text{
         color: #fafafa !important;
     }
+    ::selection,
+    mark{
+        background: #fafafa !important;
+        color: #050505 !important;
+    }
 }
