@@ -1,0 +1,58 @@
+.content-for-intro {
+	position:absolute;
+	width: 100%;
+	left: 0;
+	bottom: 20vh;
+}
+.content-for-about {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 25px;
+    height: 100%;
+    > div {
+        min-height: 50vh;
+        align-self: center;
+        border: 1px solid black;
+        padding: 25px;
+        background: rgba(128, 128, 128, 0.25);
+    }
+}
+
+#exp-years-holder {
+	text-align: center;
+}
+.expertise-bar{
+	background: rgba(136, 136, 136, 0.533);
+	height: 5px;
+	position: relative;
+    & [data-expertise]{
+        & :after {
+            content: '';
+            background: black;
+            height: 5px;
+            position: absolute;
+            width: 0%;
+            transition: all ease-in-out 1s;
+        }
+    }
+}
+#exp-skills-holder{
+	perspective: 150px;
+}
+#skills{
+	display: flex;
+    flex-wrap: wrap;
+    grid-gap: 15px;
+    justify-content: center;
+    .skill{
+        padding: 2.5px 5px;
+        border-radius: 5px;
+        background: #050505;
+    }
+}
+
+@media only screen and (max-width: 601px){
+	.content-for-about {
+	    grid-template-columns: 1fr;
+	}
+}

@@ -1,0 +1,27 @@
+::-webkit-scrollbar {
+	width: 7.5px;
+	border-radius: 5px;
+}
+::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+	background: rgba(0,0,0,0.75);
+    border-radius: 10px;
+}
+#scroll-level-holder{
+	position: fixed;
+    top: 50%;
+    left: calc(100vw - 2rem);
+    width: 5px;
+    height: 50vh;
+    background: #888888;
+    z-index: 10;
+    transform: translateY(-50%);
+}
+#scroll-level{
+	transition: all ease-in-out .3s;
+	background: black;
+    position: relative;
+}

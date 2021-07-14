@@ -1,0 +1,37 @@
+.dark{
+    ::-webkit-scrollbar-thumb {
+        background: rgba(255,255,255,0.75);
+    }
+    & html {
+        background-color: black;
+    }
+    #nav-header {
+        background: black;
+    }
+    .content-for-about {
+        > div {
+            border-color: white;
+        }
+    }
+    .expertise-bar {
+        & [data-expertise] {
+            & :after {
+                background: white;
+            }
+        }
+    }
+    #skills {
+        .skill{
+            background: #fafafa
+        }
+    }
+    .page-footer{
+        background: black;
+    }
+    #scroll-level{
+        background: white;
+    }
+    .has-text{
+        color: #fafafa !important;
+    }
+}
